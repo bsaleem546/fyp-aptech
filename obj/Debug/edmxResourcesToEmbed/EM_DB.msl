@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="e_AdminstratorModelStoreContainer" CdmEntityContainer="e_AdminstratorEntities">
+    <EntitySetMapping Name="Admin_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Admin_TB">
+        <MappingFragment StoreEntitySet="Admin_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Complaint_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Complaint_TB">
+        <MappingFragment StoreEntitySet="Complaint_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+          <ScalarProperty Name="Decription" ColumnName="Decription" />
+          <ScalarProperty Name="Days_Of_Fix" ColumnName="Days_Of_Fix" />
+          <ScalarProperty Name="Date_Of_Complaint" ColumnName="Date_Of_Complaint" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dep_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Dep_TB">
+        <MappingFragment StoreEntitySet="Dep_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Dep_Name" ColumnName="Dep_Name" />
+          <ScalarProperty Name="Role_Dep_Name" ColumnName="Role_Dep_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Lab_TB">
+        <MappingFragment StoreEntitySet="Lab_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Lab_Name" ColumnName="Lab_Name" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_Time_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Lab_Time_TB">
+        <MappingFragment StoreEntitySet="Lab_Time_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="Lab_ID" ColumnName="Lab_ID" />
+          <ScalarProperty Name="Lab_Timming" ColumnName="Lab_Timming" />
+          <ScalarProperty Name="Lab_Days" ColumnName="Lab_Days" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.User_TB">
+        <MappingFragment StoreEntitySet="User_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Dep_ID" ColumnName="Dep_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

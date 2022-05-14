@@ -1,0 +1,37 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.labModel
+
+@{
+    ViewBag.Title = "editLab";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+<section id="main" class="container 75%">
+    <header>
+        <h2>Add Lab</h2>
+    </header>
+    <div class="box">
+
+
+        @using (Html.BeginForm("editLab", "Admin", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m.labName, null, new { @placeholder = "Lab Name" })
+                </div>
+            </div>
+
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+
+                    <input type="submit" value="Edit" />
+
+                    @Html.ActionLink("Go Back", "index", "Admin", new { @class = "button" })
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</section>

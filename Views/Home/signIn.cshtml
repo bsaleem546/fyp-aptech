@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "signIn";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>SIGN IN</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("signIn", "Home", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBox("ue", null, new { @placeholder = "Username / Email" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBox("p", null, new { @placeholder = "Password" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    <input type="submit" value="Sign In" />
+                </div>
+            </div>
+        }
+
+    </div>
+</section>

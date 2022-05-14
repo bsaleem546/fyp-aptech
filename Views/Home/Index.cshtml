@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Banner -->
+<section id="banner">
+    <h2>e-Administration</h2>
+    <ul class="actions">
+        <li>
+            @{
+                if (Session["user"] == null)
+                {
+                    @Html.ActionLink("Sign In", "signIn", "Home", new { @class = "button special" })
+                }
+                else
+                {
+                    @Html.ActionLink("Sign Out", "signOut", "Home", new { @class = "button special" })
+                    <br />
+                    <h3>You Are Sign In As @Session["user"]</h3>
+                }
+            }
+        </li>
+    </ul>
+</section>
+
+<!-- Main -->
+	<!-- Main -->
+<section id="main" class="container">
+
+    <section class="box special features">
+        <div class="features-row">
+            <section>
+                <span class="icon major fa-bolt accent2"></span>
+                <h3>Lab Detail</h3>
+                <p>view lab information i.e. timings, reservation etc. </p>
+                <a href="#" download class="button alt">Click here</a>
+
+            </section>
+            <section>
+                <span class="icon major fa-area-chart accent3"></span>
+                <h3>Send Lab request</h3>
+                <p>Lab reservation process by sending request.</p>
+                <a href="#" download class="button alt">Click here</a>
+
+            </section>
+        </div>
+        <div class="features-row">
+            <section>
+                <span class="icon major fa-cloud accent4"></span>
+                <h3>Sed feugiat</h3>
+                <p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+            </section>
+            <section>
+                <span class="icon major fa-lock accent5"></span>
+                <h3>Enim phasellus</h3>
+                <p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+            </section>
+        </div>
+    </section>
+
+    <div class="12u 12u(narrower)">
+        <h3>Related Software Installation</h3>
+
+
+    </div>
+
+
+     
+
+<div class="row">
+    <div class="6u 12u(narrower)">
+
+
+        <section class="box special">
+            <span class="image featured"><img src="~/Images/3.jpg" /></span>
+            <h3>How to install</h3>
+            <p>If you run Windows Server 2008 or Windows Server 2008 R2 with Hyper-V enabled and an accelerated graphics adapter, you may experience system slowdowns that are caused by an interaction of Hyper-V, CPU features, and accelerated graphics adapters (see KB 961661).</p>
+            <ul class="actions">
+                <li><a href="intallation doc/Installing Visual Studio.docx" download class="button alt">Complete installation process</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <div class="6u 12u(narrower)">
+
+
+        <section class="box special">
+            <span class="image featured">
+                <img src="~/Images/2.jpg" /> </span>
+            <h3>How to install</h3>
+            <p>If you run Windows Server 2008 or Windows Server 2008 R2 with Hyper-V enabled and an accelerated graphics adapter, you may experience system slowdowns that are caused by an interaction of Hyper-V, CPU features, and accelerated graphics adapters (see KB 961661).</p>
+            <ul class="actions">
+                <li><a href="intallation doc/Installing Visual Studio.docx" download class="button alt">Complete installation process</a></li>
+            </ul>
+        </section>
+
+    </div>
+
+        <div class="6u 12u(narrower)">
+
+
+            <section class="box special">
+                <span class="image featured"><img src="~/images/pic07.jpg" alt="" /></span>
+                <h3>How to install</h3>
+                <p>If you run Windows Server 2008 or Windows Server 2008 R2 with Hyper-V enabled and an accelerated graphics adapter, you may experience system slowdowns that are caused by an interaction of Hyper-V, CPU features, and accelerated graphics adapters (see KB 961661).</p>
+                <ul class="actions">
+                    <li><a href="intallation doc/Installing Visual Studio.docx" download class="button alt">Complete installation process</a></li>
+                </ul>
+            </section>
+
+        </div>
+        <div class="6u 12u(narrower)">
+
+            <section class="box special">
+                <span class="image featured"><img src="~/images/pic08.jpg" alt="" /></span>
+                <h3>How to install</h3>
+                <p>Insert the SQL Server installation media. From the root folder, double-click Setup.exe. To install from a network share, locate the root folder on the share, and then double-click Setup.exe. The Installation Wizard runs the SQL Server Installation Center. </p>
+                <ul class="actions">
+                    <li><a href="intallation doc/Install SQL Server 2016.docx" download class="button alt">Complete installation process</a></li>
+                </ul>
+            </section>
+
+        </div>
+
+</div>
+
+
+</section>

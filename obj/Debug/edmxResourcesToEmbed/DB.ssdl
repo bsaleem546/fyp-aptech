@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="e_AdminstratorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Batch_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BATCH_CODE" Type="varchar" MaxLength="50" />
+    <Property Name="BATCH_SESSION" Type="varchar" MaxLength="50" />
+    <Property Name="USERS_ID" Type="int" />
+    <Property Name="CREATED_DATE" Type="datetime" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="Complaint_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ComplainName" Type="varchar" MaxLength="50" />
+    <Property Name="Decription" Type="text" />
+    <Property Name="Days_Of_Fix" Type="int" />
+    <Property Name="Users_ID" Type="int" />
+    <Property Name="Date_Of_Complaint" Type="datetime" />
+    <Property Name="MODIFIED_BY" Type="int" />
+    <Property Name="MODIFIED_DATE" Type="datetime" />
+    <Property Name="STATUS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Dep_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dep_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Role_Dep_Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Lab_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lab_Name" Type="varchar" MaxLength="50" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="Lab_Time_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Batch_ID" Type="int" />
+    <Property Name="Lab_ID" Type="int" />
+    <Property Name="Lab_Timming" Type="varchar" MaxLength="50" />
+    <Property Name="Lab_Days" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sudent_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="FATHER_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="CNIC" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="ADDRESS" Type="text" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="BATCH_ID" Type="int" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="FATHER_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="CNIC" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="PHONE" Type="varchar" MaxLength="50" />
+    <Property Name="ADDRESS" Type="text" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="Dep_ID" Type="int" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Batch_TB__USERS___4AB81AF0">
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Batch_TB">
+        <PropertyRef Name="USERS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Complaint__Users__276EDEB3">
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Complaint_TB" Type="Self.Complaint_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Complaint_TB">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lab_Time___Batch__60A75C0F">
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lab_Time_TB" Type="Self.Lab_Time_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lab_Time_TB">
+        <PropertyRef Name="Batch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lab_Time___Lab_I__619B8048">
+    <End Role="Lab_TB" Type="Self.Lab_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lab_Time_TB" Type="Self.Lab_Time_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lab_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lab_Time_TB">
+        <PropertyRef Name="Lab_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sudent_TB__BATCH__4E88ABD4">
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sudent_TB" Type="Self.Sudent_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sudent_TB">
+        <PropertyRef Name="BATCH_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_TB__Dep_ID__164452B1">
+    <End Role="Dep_TB" Type="Self.Dep_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dep_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User_TB">
+        <PropertyRef Name="Dep_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="e_AdminstratorModelStoreContainer">
+    <EntitySet Name="Admin_TB" EntityType="Self.Admin_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Batch_TB" EntityType="Self.Batch_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complaint_TB" EntityType="Self.Complaint_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dep_TB" EntityType="Self.Dep_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lab_TB" EntityType="Self.Lab_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lab_Time_TB" EntityType="Self.Lab_Time_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sudent_TB" EntityType="Self.Sudent_TB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_TB" EntityType="Self.User_TB" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Batch_TB__USERS___4AB81AF0" Association="Self.FK__Batch_TB__USERS___4AB81AF0">
+      <End Role="User_TB" EntitySet="User_TB" />
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Complaint__Users__276EDEB3" Association="Self.FK__Complaint__Users__276EDEB3">
+      <End Role="User_TB" EntitySet="User_TB" />
+      <End Role="Complaint_TB" EntitySet="Complaint_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lab_Time___Batch__60A75C0F" Association="Self.FK__Lab_Time___Batch__60A75C0F">
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+      <End Role="Lab_Time_TB" EntitySet="Lab_Time_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lab_Time___Lab_I__619B8048" Association="Self.FK__Lab_Time___Lab_I__619B8048">
+      <End Role="Lab_TB" EntitySet="Lab_TB" />
+      <End Role="Lab_Time_TB" EntitySet="Lab_Time_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sudent_TB__BATCH__4E88ABD4" Association="Self.FK__Sudent_TB__BATCH__4E88ABD4">
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+      <End Role="Sudent_TB" EntitySet="Sudent_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_TB__Dep_ID__164452B1" Association="Self.FK__User_TB__Dep_ID__164452B1">
+      <End Role="Dep_TB" EntitySet="Dep_TB" />
+      <End Role="User_TB" EntitySet="User_TB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

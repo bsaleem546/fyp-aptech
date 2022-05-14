@@ -1,0 +1,76 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.Student
+
+@{
+    ViewBag.Title = "addStu";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>Add Student</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("addStu", "Admin", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._sname, null, new { @placeholder = "Name" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._sFATHER_NAME, null, new { @placeholder = "Father Name" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._sCNIC, null, new { @placeholder = "CNIC" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    <input type="date" name="dob" />
+                </div>
+            </div>
+            <div class="row uniform 50%">
+                <div class="12u">
+                    @Html.TextBoxFor(m => m._sPHONE, null, new { @placeholder = "Phone Number" })
+                </div>
+                <div class="12u">
+                    @Html.TextAreaFor(m => m._sADDRESS, 3, 6, new { @placeholder = "Address" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._sEMAIL, null, new { @placeholder = "Email" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    @Html.PasswordFor(m => m._sPASSWORD, new { @placeholder = "Password" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="12u">
+                    @Html.DropDownList("bt", "Select Any Batch Code")
+                </div>
+               
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    <input type="submit" value="Create" />
+                    @Html.ActionLink("Go Back", "index", "Admin", new { @class = "button" })
+
+
+                </div>
+            </div>
+        }
+        @*@{
+            if (ViewBag.r != "") 
+            {
+                <h1>@ViewBag.r</h1>
+            
+            }
+        }*@
+    </div>
+</section>

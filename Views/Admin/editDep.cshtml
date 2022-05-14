@@ -1,0 +1,40 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.Dep
+@{
+    ViewBag.Title = "editDep";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>Edit Department</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("editDep", "Admin", FormMethod.Post)) 
+        {
+           
+        <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                   @Html.TextBoxFor(m=>m.Dep_name)
+                </div>
+            </div>
+            
+             <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                   @Html.TextBoxFor(m=>m.Dep_role)
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    
+                        <input type="submit" value="Edit" />
+                    @Html.ActionLink("Go Back To Panel", "index", "Admin", new { @class = "button" })
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</section>

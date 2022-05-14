@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="e_AdminstratorModelStoreContainer" CdmEntityContainer="e_AdminstratorEntities">
+    <EntitySetMapping Name="Admin_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Admin_TB">
+        <MappingFragment StoreEntitySet="Admin_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batch_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Batch_TB">
+        <MappingFragment StoreEntitySet="Batch_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BATCH_CODE" ColumnName="BATCH_CODE" />
+          <ScalarProperty Name="BATCH_SESSION" ColumnName="BATCH_SESSION" />
+          <ScalarProperty Name="USERS_ID" ColumnName="USERS_ID" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Complaint_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Complaint_TB">
+        <MappingFragment StoreEntitySet="Complaint_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+          <ScalarProperty Name="Decription" ColumnName="Decription" />
+          <ScalarProperty Name="Days_Of_Fix" ColumnName="Days_Of_Fix" />
+          <ScalarProperty Name="Users_ID" ColumnName="Users_ID" />
+          <ScalarProperty Name="Date_Of_Complaint" ColumnName="Date_Of_Complaint" />
+          <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+          <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dep_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Dep_TB">
+        <MappingFragment StoreEntitySet="Dep_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Dep_Name" ColumnName="Dep_Name" />
+          <ScalarProperty Name="Role_Dep_Name" ColumnName="Role_Dep_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Lab_TB">
+        <MappingFragment StoreEntitySet="Lab_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Lab_Name" ColumnName="Lab_Name" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lab_Time_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Lab_Time_TB">
+        <MappingFragment StoreEntitySet="Lab_Time_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Batch_ID" ColumnName="Batch_ID" />
+          <ScalarProperty Name="Lab_ID" ColumnName="Lab_ID" />
+          <ScalarProperty Name="Lab_Timming" ColumnName="Lab_Timming" />
+          <ScalarProperty Name="Lab_Days" ColumnName="Lab_Days" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sudent_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.Sudent_TB">
+        <MappingFragment StoreEntitySet="Sudent_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="BATCH_ID" ColumnName="BATCH_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_TB">
+      <EntityTypeMapping TypeName="e_AdminstratorModel.User_TB">
+        <MappingFragment StoreEntitySet="User_TB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="FATHER_NAME" ColumnName="FATHER_NAME" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Dep_ID" ColumnName="Dep_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

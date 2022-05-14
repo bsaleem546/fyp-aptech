@@ -1,0 +1,70 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.Users
+
+@{
+    ViewBag.Title = "editUser";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>Edit User</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("editUser", "Admin", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m.u_NAME, null, new { @placeholder = "Name" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m.u_FATHER_NAME, null, new { @placeholder = "Father Name" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m.u_CNIC, null, new { @placeholder = "CNIC" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    <input type="date" name="dob" />
+                </div>
+            </div>
+            <div class="row uniform 50%">
+                <div class="12u">
+                    @Html.TextBoxFor(m => m.u_PHONE, null, new { @placeholder = "Phone Number" })
+                </div>
+                <div class="12u">
+                    @Html.TextAreaFor(m => m.u_ADDRESS, 3, 6, new { @placeholder = "Address" })
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m.u_EMAIL, null, new { @placeholder = "Email" })
+                </div>
+              
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.DropDownList("dname1", "Select Department")
+                </div>
+                <div class="6u 12u(mobilep)">
+                    @Html.DropDownList("drole1", "Select Department Role")
+                </div>
+            </div>
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    <input type="submit" value="Edit" />
+                    @Html.ActionLink("Go Back To Panel", "index", "Admin", new { @class = "button" })
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+

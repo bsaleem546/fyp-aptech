@@ -1,0 +1,56 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.labModel
+
+@{
+    ViewBag.Title = "addLt";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>Add Lab Timmings</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("addLt", "Admin", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    <select name="time">
+                        <option value="">Select Lab Timming</option>
+                        <option value="9 To 11">9 To 11</option>
+                        <option value="11 To 1">11 To 1</option>
+                        <option value="1 To 3">1 To 3</option>
+                        <option value="3 To 5">3 To 5</option>
+                        <option value="5 To 7">5 To 7</option>
+                    </select>
+                </div>
+
+                <div class="6u 12u(mobilep)">
+                    <select name="days">
+                        <option value="">Select Lab Days</option>
+                        <option value="MWF">MWF</option>
+                        <option value="TTS">TTS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.DropDownList("b","Select Any Batch")
+                </div>
+
+                <div class="6u 12u(mobilep)">
+                    @Html.DropDownList("l", "Select Any Lab")
+                </div>
+            </div>
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+
+                    <input type="submit" value="Create" />
+                    @Html.ActionLink("Go Back", "index", "Admin", new { @class = "button" })
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+

@@ -1,0 +1,45 @@
+﻿@model MVC_PROJECT_e_Adminstrator.Models.batchModel
+@{
+    ViewBag.Title = "addbth";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+
+}
+
+
+<section id="main" class="container 75%">
+    <header>
+        <h2>Add Batch</h2>
+    </header>
+    <div class="box">
+        @using (Html.BeginForm("addbth", "Admin", FormMethod.Post))
+        {
+
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._bname, null, new { @placeholder = "Batch Code" })
+                </div>
+                <div class="6u 12u(mobilep)">
+                    @Html.TextBoxFor(m => m._bsession, null, new { @placeholder = "Batch Session" })
+                </div>
+            </div>
+
+           <div class="row uniform 50%">
+		        <div class="12u">
+                   @Html.DropDownList("teach","Select Any Teacher")
+                </div>
+              
+            </div>
+            
+            <div class="row uniform 50%">
+                <div class="6u 12u(mobilep)">
+
+                    <input type="submit" value="Create" />
+                    @Html.ActionLink("Go Back", "index", "Admin", new { @class = "button" })
+
+
+                </div>
+            </div>
+        }
+
+    </div>
+</section>

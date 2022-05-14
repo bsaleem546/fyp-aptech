@@ -1,0 +1,393 @@
+﻿@model IEnumerable<MVC_PROJECT_e_Adminstrator.Models.Users>
+
+@{
+    ViewBag.Title = "Admin Panel";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+
+
+
+<style>
+    .btnright {
+        margin-left: 82%;
+        margin-top: -6.5%
+    }
+    .txt {
+        
+        float:left; 
+        
+    }
+    .btn1 {
+        margin-left: 55%;
+        margin-bottom: 5%;
+    }
+    #lightbox {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        left: 20%;
+        top: 10%;
+        border: 1px solid black;
+        display: none;
+       
+    }
+    #lightbox1 {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        left: 20%;
+        top: 10%;
+        border: 1px solid black;
+        display: none;
+    }
+</style>
+<section id="main" class="container">
+    <header>
+        <h2>e_Adminstrator</h2>
+        <p>Admin Panel</p>
+        @using (Html.BeginForm("", "", FormMethod.Post)) 
+        {
+            @Html.TextBox("s", null, new { @placeholder = "Type To Search" })
+            <br />
+            <select name="role">
+                <option value="">Type Of Search</option>
+                <option value="d">Department</option>
+                <option value="u">Users</option>
+                <option value="b">Batch</option>
+                <option value="s">Student</option>
+                <option value="l">Lab</option>
+                <option value="lt">Lab Timmings</option>
+                <option value="c">Complaints</option>
+            </select>
+            <br />
+            <input type="submit" value="Search" />
+        }
+    </header>
+
+    @*.......................ADD DEP WORK START.............................................*@
+
+
+    <section class="box">
+        <h3>
+            <center> All Departement</center>
+            @Html.ActionLink("New Departement", "addDep", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid griddep = new WebGrid(@ViewBag.dep, rowsPerPage: 5);
+                griddep.SortDirection = SortDirection.Descending;
+                @griddep.GetHtml(
+
+                columns: new[] {
+                                            griddep.Column("Dep_ID","ID"),
+                                            griddep.Column("Dep_name","Departement Name"),
+                                            griddep.Column("Dep_role","Departement Role"),
+                                            griddep.Column("", format: (dep) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Edit", "editDep", "Admin", new
+                                               {
+                                                   id = dep.Dep_ID,
+                                               }, null).ToString() + " | " +
+
+                                                Html.ActionLink("Delete", "deleteDep", "Admin", new
+                                               {
+                                                   id = dep.Dep_ID,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+
+    @*.......................ADD DEP WORK END.............................................*@
+
+
+    @*.......................ADD USERS WORK START.............................................*@
+
+    <section class="box">
+        <h3>
+            <center> All Users</center>
+            @Html.ActionLink("New Users", "addUser", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid griduser = new WebGrid(@ViewBag.users, rowsPerPage: 2);
+                griduser.SortDirection = SortDirection.Descending;
+                @griduser.GetHtml(
+
+                columns: new[] {
+                                            griduser.Column("u_id","ID"),
+                                            griduser.Column("u_NAME","Name"),
+                                            griduser.Column("u_FATHER_NAME","Father Name"),
+                                            griduser.Column("u_CNIC","CNIC"),
+                                            griduser.Column("u_DOB","Date of birth"),
+                                            griduser.Column("u_PHONE","Phone"),
+                                            griduser.Column("u_ADDRESS","Address"),
+                                            griduser.Column("u_EMAIL","Email"),
+                                            griduser.Column("u_Dep_name","Department Name"),
+                                            griduser.Column("u_Dep_role","Department Role"),
+                                            
+                                            griduser.Column("", format: (user) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Delete", "deleteUser", "Admin", new
+                                               {
+                                                   id = user.u_id,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+    @*.......................ADD USERS WORK END.............................................*@
+
+    @*.......................ADD BATCH WORK START.............................................*@
+
+
+
+    <section class="box">
+        <h3>
+            <center> All Batch</center>
+            @Html.ActionLink("New Batches", "addbth", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid gridbth = new WebGrid(@ViewBag.bth, rowsPerPage: 5);
+                gridbth.SortDirection = SortDirection.Descending;
+                @gridbth.GetHtml(
+
+                columns: new[] {
+                                            gridbth.Column("_bid","ID"),
+                                            gridbth.Column("_bname","Batch Code"),
+                                            gridbth.Column("_bsession","Batch Session"),
+                                            gridbth.Column("_bdate","Created Date"),
+                                            gridbth.Column("_busername","Teacher Name"),
+                                            gridbth.Column("_bdep","Department Name"),
+                                            gridbth.Column("_bdeprole","Role Type"),
+                                            
+                                            
+                                            gridbth.Column("", format: (bths) =>
+                                         new HtmlString(
+                                              
+
+                                                Html.ActionLink("Delete", "deletebth", "Admin", new
+                                               {
+                                                   id = bths._bid,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+    @*.......................ADD BATCH WORK END.............................................*@
+
+    @*.......................ADD STUDENT WORK START.............................................*@
+    <section class="box">
+        <h3>
+            <center> All Students</center>
+            @Html.ActionLink("New Student", "addStu", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid gridstu = new WebGrid(@ViewBag.stu, rowsPerPage: 2);
+                gridstu.SortDirection = SortDirection.Descending;
+                @gridstu.GetHtml(
+
+                columns: new[] {
+                                            gridstu.Column("_sid","ID"),
+                                            gridstu.Column("_sname","Name"),
+                                            gridstu.Column("_sFATHER_NAME","Father Name"),
+                                            gridstu.Column("_sCNIC","CNIC"),
+                                            gridstu.Column("_sDOB","Date of birth"),
+                                            gridstu.Column("_sPHONE","Phone"),
+                                            gridstu.Column("_sADDRESS","Address"),
+                                            gridstu.Column("_sEMAIL","Email"),
+                                            gridstu.Column("_sbatchname","Batch Code"),
+                                            gridstu.Column("_sbatchsession","Batch Session"),
+
+                                            griduser.Column("", format: (stuu) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Delete", "deleteStu", "Admin", new
+                                               {
+                                                   id = stuu._sid,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+    @*.......................ADD STUDENT WORK END.............................................*@
+
+
+    @*.......................ADD LAB WORK START.............................................*@
+
+
+    <section class="box">
+        <h3>
+            <center> All Labs</center>
+            @Html.ActionLink("New Lab", "addLab", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid gridlab = new WebGrid(@ViewBag.lab, rowsPerPage: 5);
+                gridlab.SortDirection = SortDirection.Descending;
+                @gridlab.GetHtml(
+
+                columns: new[] {
+                                            gridlab.Column("labId","ID"),
+                                            gridlab.Column("labName","Lab"),
+                                            gridlab.Column("labStatus","Status"),
+                                            gridlab.Column("", format: (lab) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Edit", "editLab", "Admin", new
+                                               {
+                                                   id = lab.labId,
+                                               }, null).ToString() + " | " +
+
+                                                Html.ActionLink("Delete", "deleteLab", "Admin", new
+                                               {
+                                                   id = lab.labId,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+
+    @*.......................ADD LAB WORK END.............................................*@
+
+
+    @*.......................ADD LAB TIMMING WORK START.............................................*@
+
+    <section class="box">
+        <h3>
+            <center>Lab Timmings</center>
+            @Html.ActionLink("New Lab Tmming", "addLt", "Admin", new { @class = "button special small" })
+
+        </h3>
+
+        <div class="table-wrapper">
+
+            @{
+                WebGrid gridlt = new WebGrid(@ViewBag.lt, rowsPerPage: 5);
+                gridlt.SortDirection = SortDirection.Descending;
+                @gridlt.GetHtml(
+
+                columns: new[] {
+                                            gridlt.Column("ltId","ID"),
+                                            gridlt.Column("ltlabname","Lab Name"),
+                                            gridlt.Column("lttime","Lab Timming"),
+                                            gridlt.Column("ltdays","Lab Days"),
+                                            gridlt.Column("ltbatch","Batch"),
+                                             gridlt.Column("ltUsername","User"),
+                                            gridlt.Column("ltdep","Department"),
+                                            
+                                            
+                                            gridlt.Column("", format: (lts) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Edit", "editLt", "Admin", new
+                                               {
+                                                   id = lts.ltId,
+                                               }, null).ToString() + " | " +
+
+                                                Html.ActionLink("Delete", "deleteLt", "Admin", new
+                                               {
+                                                   id = lts.ltId,
+                                               }, null).ToString()
+                                               ))
+
+                                            }
+                );
+            }
+
+        </div>
+
+    </section>
+    @*.......................ADD LAB TIMMING WORK END.............................................*@
+
+        @*//.......................COMP KAAM START....................................//*@
+
+    <section class="box">
+        <center><h3>All Complaints</h3></center>
+
+        <div class="table-wrapper">
+            @{
+                WebGrid gridcom = new WebGrid(@ViewBag.com, rowsPerPage: 5);
+                gridcom.SortDirection = SortDirection.Descending;
+                @gridcom.GetHtml(
+
+                         columns: new[] {
+                                            gridcom.Column("comId","ID"),                                        
+                                            gridcom.Column("comName","Complaint Title"),
+                                            gridcom.Column("comDes","Complaint Description"),
+                                            gridcom.Column("comDay2fix","Days To Fix"),
+                                            
+                                            gridcom.Column("comUsername","Complaint By"),                                           
+                                             gridcom.Column("comUserdep","Department From"),
+                                            gridcom.Column("com_User_dep_role","Role Of User"),
+                                            gridcom.Column("comDate","Date of complaint"),
+                                            
+                                             gridcom.Column("commodifyby","Complaint Modifyed By"),                                           
+                                             gridcom.Column("commodifybydep","Department From"),
+                                            gridcom.Column("commodifybyrole","Role Of User"),
+                                            
+                                            gridcom.Column("comStatus","Status"),
+                                              gridcom.Column("", format: (com) =>
+                                         new HtmlString(
+                                                Html.ActionLink("Process", "", "Admin", new
+                                               {
+                                                   id = com.comId,
+                                               }, null).ToString()
+                                               ))
+                                            }
+
+                );
+
+            }
+
+        </div>
+    </section>
+        @* //.......................COMP KAAM END....................................//*@
+
+
+
+
+</section>
+
+
+

@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="e_AdminstratorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Batch_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BATCH_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BATCH_SESSION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USERS_ID" Type="Int32" />
+    <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="STATUS" Type="Boolean" />
+    <NavigationProperty Name="User_TB" Relationship="Self.FK__Batch_TB__USERS___4AB81AF0" FromRole="Batch_TB" ToRole="User_TB" />
+    <NavigationProperty Name="Lab_Time_TB" Relationship="Self.FK__Lab_Time___Batch__60A75C0F" FromRole="Batch_TB" ToRole="Lab_Time_TB" />
+    <NavigationProperty Name="Sudent_TB" Relationship="Self.FK__Sudent_TB__BATCH__4E88ABD4" FromRole="Batch_TB" ToRole="Sudent_TB" />
+  </EntityType>
+  <EntityType Name="Complaint_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComplainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Days_Of_Fix" Type="Int32" />
+    <Property Name="Users_ID" Type="Int32" />
+    <Property Name="Date_Of_Complaint" Type="DateTime" Precision="3" />
+    <Property Name="MODIFIED_BY" Type="Int32" />
+    <Property Name="MODIFIED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User_TB" Relationship="Self.FK__Complaint__Users__276EDEB3" FromRole="Complaint_TB" ToRole="User_TB" />
+  </EntityType>
+  <EntityType Name="Dep_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Dep_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role_Dep_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User_TB" Relationship="Self.FK__User_TB__Dep_ID__164452B1" FromRole="Dep_TB" ToRole="User_TB" />
+  </EntityType>
+  <EntityType Name="Lab_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lab_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="Boolean" />
+    <NavigationProperty Name="Lab_Time_TB" Relationship="Self.FK__Lab_Time___Lab_I__619B8048" FromRole="Lab_TB" ToRole="Lab_Time_TB" />
+  </EntityType>
+  <EntityType Name="Lab_Time_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Batch_ID" Type="Int32" />
+    <Property Name="Lab_ID" Type="Int32" />
+    <Property Name="Lab_Timming" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lab_Days" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batch_TB" Relationship="Self.FK__Lab_Time___Batch__60A75C0F" FromRole="Lab_Time_TB" ToRole="Batch_TB" />
+    <NavigationProperty Name="Lab_TB" Relationship="Self.FK__Lab_Time___Lab_I__619B8048" FromRole="Lab_Time_TB" ToRole="Lab_TB" />
+  </EntityType>
+  <EntityType Name="Sudent_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BATCH_ID" Type="Int32" />
+    <Property Name="STATUS" Type="Boolean" />
+    <NavigationProperty Name="Batch_TB" Relationship="Self.FK__Sudent_TB__BATCH__4E88ABD4" FromRole="Sudent_TB" ToRole="Batch_TB" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_TB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FATHER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dep_ID" Type="Int32" />
+    <Property Name="STATUS" Type="Boolean" />
+    <NavigationProperty Name="Batch_TB" Relationship="Self.FK__Batch_TB__USERS___4AB81AF0" FromRole="User_TB" ToRole="Batch_TB" />
+    <NavigationProperty Name="Complaint_TB" Relationship="Self.FK__Complaint__Users__276EDEB3" FromRole="User_TB" ToRole="Complaint_TB" />
+    <NavigationProperty Name="Dep_TB" Relationship="Self.FK__User_TB__Dep_ID__164452B1" FromRole="User_TB" ToRole="Dep_TB" />
+  </EntityType>
+  <Association Name="FK__Batch_TB__USERS___4AB81AF0">
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Batch_TB">
+        <PropertyRef Name="USERS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lab_Time___Batch__60A75C0F">
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lab_Time_TB" Type="Self.Lab_Time_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lab_Time_TB">
+        <PropertyRef Name="Batch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sudent_TB__BATCH__4E88ABD4">
+    <End Role="Batch_TB" Type="Self.Batch_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sudent_TB" Type="Self.Sudent_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sudent_TB">
+        <PropertyRef Name="BATCH_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Complaint__Users__276EDEB3">
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Complaint_TB" Type="Self.Complaint_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Complaint_TB">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_TB__Dep_ID__164452B1">
+    <End Role="Dep_TB" Type="Self.Dep_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_TB" Type="Self.User_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dep_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User_TB">
+        <PropertyRef Name="Dep_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lab_Time___Lab_I__619B8048">
+    <End Role="Lab_TB" Type="Self.Lab_TB" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lab_Time_TB" Type="Self.Lab_Time_TB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lab_TB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lab_Time_TB">
+        <PropertyRef Name="Lab_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="e_AdminstratorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admin_TB" EntityType="Self.Admin_TB" />
+    <EntitySet Name="Batch_TB" EntityType="Self.Batch_TB" />
+    <EntitySet Name="Complaint_TB" EntityType="Self.Complaint_TB" />
+    <EntitySet Name="Dep_TB" EntityType="Self.Dep_TB" />
+    <EntitySet Name="Lab_TB" EntityType="Self.Lab_TB" />
+    <EntitySet Name="Lab_Time_TB" EntityType="Self.Lab_Time_TB" />
+    <EntitySet Name="Sudent_TB" EntityType="Self.Sudent_TB" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="User_TB" EntityType="Self.User_TB" />
+    <AssociationSet Name="FK__Batch_TB__USERS___4AB81AF0" Association="Self.FK__Batch_TB__USERS___4AB81AF0">
+      <End Role="User_TB" EntitySet="User_TB" />
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lab_Time___Batch__60A75C0F" Association="Self.FK__Lab_Time___Batch__60A75C0F">
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+      <End Role="Lab_Time_TB" EntitySet="Lab_Time_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sudent_TB__BATCH__4E88ABD4" Association="Self.FK__Sudent_TB__BATCH__4E88ABD4">
+      <End Role="Batch_TB" EntitySet="Batch_TB" />
+      <End Role="Sudent_TB" EntitySet="Sudent_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Complaint__Users__276EDEB3" Association="Self.FK__Complaint__Users__276EDEB3">
+      <End Role="User_TB" EntitySet="User_TB" />
+      <End Role="Complaint_TB" EntitySet="Complaint_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_TB__Dep_ID__164452B1" Association="Self.FK__User_TB__Dep_ID__164452B1">
+      <End Role="Dep_TB" EntitySet="Dep_TB" />
+      <End Role="User_TB" EntitySet="User_TB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lab_Time___Lab_I__619B8048" Association="Self.FK__Lab_Time___Lab_I__619B8048">
+      <End Role="Lab_TB" EntitySet="Lab_TB" />
+      <End Role="Lab_Time_TB" EntitySet="Lab_Time_TB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
